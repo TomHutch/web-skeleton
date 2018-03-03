@@ -1,0 +1,47 @@
+{
+  "name": "web-skeleton",
+  "version": "1.0.0",
+  "description": "Project skeleton for a React / Redux web app on top of a Postgres db",
+  "main": "index.js",
+  "scripts": {
+    "dev": "export NODE_ENV=development; npm-run-all --parallel dev:webpack dev:server",
+    "dev:server": "nodemon src/server/ -w dist -w src/server/",
+    "dev:webpack": "webpack --watch --config config/webpack.js",
+    "start": "export NODE_ENV=production npm run build; node src/server",
+    "test": "NODE_ENV=test mocha './{,!(node_modules)/**}/*.spec.js'",
+    "build": "webpack --config config/webpack.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "chai": "^4.1.2",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-angular": "^3.2.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "mocha": "^5.0.0",
+    "nodemon": "^1.17.1",
+    "npm-run-all": "^4.1.2"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
+    "express": "^4.16.2",
+    "html-webpack-plugin": "^2.30.1",
+    "isomorphic-fetch": "^2.2.1",
+    "pg": "^7.4.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "webpack": "^3.10.0"
+  }
+}

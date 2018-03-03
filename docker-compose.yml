@@ -1,0 +1,29 @@
+version: "3.2"
+services:
+  webapp:
+    image: node:8.9.4
+    depends_on:
+      - db
+    volumes:
+      - .:/opt/webapp
+    working_dir: /opt/webapp
+    command: "sh scripts/entrypoint.sh"
+    ports:
+      - "0.0.0.0:3000:3000"
+    environment:
+      ENV: dev
+      PGUSER: postgres
+      PGDATABASE: db_name
+      PGPASSWORD: ${WEBAPP_PGPASSWORD}
+      PGHOST: db
+  
+  db:
+    image: postgres:9.6.0
+    ports:
+      - 5432
+    environment:
+      POSTGRES_DB: db_name
+    volumes:
+      - ./db/scaffold:/docker-entrypoint-initdb.d/
+      - ./postgres-data:/var/lib/postgresql/data
+      - ./db/:/opt/db
