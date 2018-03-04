@@ -15,4 +15,5 @@ export default () => (
         </Switch>
       </div>
     </BrowserRouter>
-  </Provider>);
+  </Provider>
+);
