@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
@@ -16,6 +17,7 @@ module.exports = {
   devServer: {
     contentBase: path.resolve('./dist/client'),
     compress: true,
+    hot: true,
     host: '0.0.0.0',
     port: 3100,
     proxy: {
@@ -31,15 +33,16 @@ module.exports = {
       },
       {
         test: /\.(s*)css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader'],
-        }),
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
   plugins: [
-    new ExtractTextPlugin({ filename: 'style.css' }),
+    new ExtractTextPlugin({
+      filename: 'style.css',
+      disable: process.env.NODE_ENV === 'development',
+    }),
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'Dev App',
       template: 'src/client/assets/template.html',

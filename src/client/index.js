@@ -1,9 +1,8 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
+import ReactDOM from 'react-dom';
+import { hot } from 'react-hot-loader';
 import Router from './Router';
 
-function render() {
-  ReactDOM.render(<Router />, document.getElementById('root'));
-}
+const App = hot(module)(() => <Router />);
 
-render();
+ReactDOM.render(<App />, document.getElementById('root'));
