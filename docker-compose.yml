@@ -9,6 +9,7 @@ services:
     working_dir: /opt/webapp
     command: "sh scripts/entrypoint.sh"
     ports:
+      - "0.0.0.0:3100:3100"
       - "0.0.0.0:3000:3000"
     environment:
       ENV: dev
