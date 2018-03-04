@@ -2,7 +2,7 @@ Web Skeleton
 ==============
 
 This is web-app skeleton, to be used as a reference or as a seed for a new project.
-Concepts include: containerisation, application state management, ui components, database integration, hot-reloading, linting, bundling, transpilation, styling and unit testing.
+Concepts include: containerisation, application state management, ui components, database integration, hot-reloading, linting, bundling, transpilation, styling, unit testing and skeletons.
 
 ## Setup
 
