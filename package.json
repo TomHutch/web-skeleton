@@ -8,7 +8,9 @@
     "dev:webpack": "webpack-dev-server --config config/webpack.js",
     "dev:server": "nodemon src/server/ --watch src/server/",
     "start": "export NODE_ENV=production npm run build; node src/server",
-    "test": "NODE_ENV=test mocha './{,!(node_modules)/**}/*.spec.js'",
+    "test": "NODE_ENV=test; npm run test:client; npm run test:server",
+    "test:client": "NODE_ENV=test mocha --require babel-register 'src/client/**/*.spec.*'",
+    "test:server": "NODE_ENV=test mocha 'src/server/**/*.spec.*'",
     "build": "webpack --config config/webpack.js"
   },
   "author": "",
@@ -16,6 +18,8 @@
   "devDependencies": {
     "babel-eslint": "^8.2.2",
     "chai": "^4.1.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-angular": "^3.2.0",
@@ -23,8 +27,10 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "mocha": "^5.0.0",
+    "mockery": "^2.1.0",
     "nodemon": "^1.17.1",
     "npm-run-all": "^4.1.2",
+    "sinon": "^4.4.2",
     "webpack-cli": "^2.0.10",
     "webpack-dev-server": "^2.11.2"
   },
@@ -32,6 +38,7 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.3",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.10",
     "express": "^4.16.2",

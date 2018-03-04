@@ -1,7 +1,6 @@
-const router = require('express').Router();
-const db = require('./lib/pg').dbClient;
+const db = require('../lib/pg');
 
-router.get('/skeletons', (req, res) => {
+function getSkeletons(req, res) {
   const sql = 'select * from skeletons.almanach';
   db.query(sql)
     .then((results) => {
@@ -11,6 +10,6 @@ router.get('/skeletons', (req, res) => {
       console.error(err);
       res.status(500).send('Internal server error.');
     });
-});
+}
 
-module.exports = router;
+module.exports = { getSkeletons };

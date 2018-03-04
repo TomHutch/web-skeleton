@@ -16,7 +16,7 @@ class Main extends Component {
         <div className="table-wrapper">
           {headers.map(header => (
             <div
-              className="table__cell--header"
+              className="table__cell table__cell--header"
               key={generate()}
             >
               {header}
@@ -24,7 +24,7 @@ class Main extends Component {
           ))}
           {skeletons.map((skeleton, i) => Object.values(skeleton).map(val => (
             <div
-              className={i % 2 ? 'table__cell--odd' : 'table__cell--even'}
+              className={`table__cell ${i % 2 ? 'table__cell--odd' : 'table__cell--even'}`}
               key={generate()}
             >
               {val}

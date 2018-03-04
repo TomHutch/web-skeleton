@@ -38,4 +38,4 @@ const config = {
 
 const dbClient = setupDatabaseConnection(config);
 
-module.exports = { dbClient, setupDatabaseConnection };
+module.exports = dbClient;
