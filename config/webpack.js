@@ -6,6 +6,7 @@ module.exports = {
   entry: {
     app: [
       './src/client/index.js',
+      './src/client/styles/style.css',
     ],
   },
   output: {
@@ -28,9 +29,17 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
+      {
+        test: /\.(s*)css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader'],
+        }),
+      },
     ],
   },
   plugins: [
+    new ExtractTextPlugin({ filename: 'style.css' }),
     new HtmlWebpackPlugin({
       title: 'Dev App',
       template: 'src/client/assets/template.html',

@@ -1,0 +1,13 @@
+.table-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr 1fr 1fr;
+  background-color: #eee;
+}
+
+.table__cell--header {
+  border-bottom: 1px solid #ccc;
+}
+
+.table__cell--even {
+  background-color: #ddd;
+}

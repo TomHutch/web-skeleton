@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { generate } from 'shortid';
 
 class Main extends Component {
   componentWillMount() {
@@ -8,10 +9,28 @@ class Main extends Component {
 
   render() {
     const { skeletons } = this.props;
+    const headers = Object.keys(skeletons[0]);
 
     return (
       <div className="main-page">
-        {JSON.stringify(skeletons)}
+        <div className="table-wrapper">
+          {headers.map(header => (
+            <div
+              className="table__cell--header"
+              key={generate()}
+            >
+              {header}
+            </div>
+          ))}
+          {skeletons.map((skeleton, i) => Object.values(skeleton).map(val => (
+            <div
+              className={i % 2 ? 'table__cell--odd' : 'table__cell--even'}
+              key={generate()}
+            >
+              {val}
+            </div>
+          )))}
+        </div>
       </div>
     );
   }
@@ -23,7 +42,7 @@ Main.propTypes = {
 };
 
 Main.defaultProps = {
-  skeletons: [],
+  skeletons: [{}],
 };
 
 export default Main;
