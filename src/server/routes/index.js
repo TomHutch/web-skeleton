@@ -1,4 +1,5 @@
 const db = require('../lib/pg');
+const logger = require('../lib/logger');
 
 function getSkeletons(req, res) {
   const sql = 'select * from skeletons.almanach';
@@ -7,7 +8,7 @@ function getSkeletons(req, res) {
       res.json(results.rows);
     })
     .catch((err) => {
-      console.error(err);
+      logger.error(err, { sql, stack: err.stack });
       res.status(500).send('Internal server error.');
     });
 }

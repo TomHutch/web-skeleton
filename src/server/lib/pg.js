@@ -1,11 +1,13 @@
+/* eslint-disable no-param-reassign */
 const pg = require('pg');
+const logger = require('./logger');
 
 pg.types.setTypeParser(1114, stringValue => new Date(`${stringValue}+0000`));
 
 function setupDatabaseConnection(config) {
   const pool = new pg.Pool(config);
   pool.on('error', (err) => {
-    console.error('idle client error', err.message, err.stack);
+    logger.error('idle client error', { stack: err.stack });
     throw Error(err);
   });
 
